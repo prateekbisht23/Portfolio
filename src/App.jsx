@@ -13,6 +13,7 @@ import Contact from './pages/Contact';
 function App() {
   return (
     <Router>
+      {/* <Explorer /> */}
       <div className="min-h-screen flex bg-[#161616] text-gray-200 font-mono">
         <div className="flex-1">
           <Navbar />
