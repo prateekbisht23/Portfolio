@@ -56,11 +56,11 @@ function Navbar() {
       </nav>
 
       <div
-        className={`fixed left-0 w-full h-[3px] z-50 bg-[rgb(41,41,41)] transition-all linear duration-300 ${isVisible ? "top-[56px]" : "top-0"
+        className={`fixed left-0 w-full z-50 bg-[rgb(41,41,41)] transition-all linear duration-300 ${isVisible ? "top-[56px]" : "top-0"
           }`}
       >
         <div
-          className="h-[3px] bg-[rgba(85,159,255,0.9)] transition-all duration-150"
+          className="h-[1px] bg-[rgba(85,159,255,0.9)] transition-all duration-150"
           style={{ width: `${scrollProgress}%` }}
         ></div>
       </div>

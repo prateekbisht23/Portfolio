@@ -2,10 +2,10 @@ import { FaHeart, FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icon
 
 function Footer() {
   return (
-    <footer className="bg-dark border-t border-gray-800 mt-auto py-6">
+    <footer className="border-t border-[rgba(255,255,255,0.2)] mt-auto py-6">
       <div className="container mx-auto px-4 flex flex-col items-center space-y-4 text-gray-300 text-center">
 
-        <div className="w-[95%] border-b border-[rgba(255,255,255,0.1)] pb-6">
+        <div className="w-[95%] border-b border-[rgba(255,255,255,0.2)] pb-6">
           Have an exciting idea? Let’s build something awesome together!! 🚀
         </div>
 

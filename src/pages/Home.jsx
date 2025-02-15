@@ -53,16 +53,16 @@ function Home() {
         </div>
         <div className="text-gray-400 font-mono">
           <p>
-            <span className="text-gray-500">// Reminder: Express better!!</span>
+            <span className="text-gray-500">// Reminder to CODE...</span>
           </p>
           <p>
-            <span className="text-purple-400">const</span> advice =
-            <span className="text-green-400"> "Use '!' more often!!"</span>;
+            <span className="text-purple-400">const</span> quote =
+            <span className="text-green-400"> "Code! Create! Conquer!"</span>;
           </p>
         </div>
 
       </div>
-      <div className="gap-4 flex flex-col items-center justify-center bg-[rgb(20,20,20)] border border-[#292929] shadow-lg shadow-[rgb(25,25,25)] px-6 rounded-xl">
+      <div className="gap-4 flex flex-col items-center justify-center bg-[rgb(20,20,20)] border border-[#292929] shadow-sm shadow-[rgba(85,159,255,0.3)] px-6 rounded-xl">
         <div className="bg-[rgb(24,24,24)] rounded-full w-40 h-40 p-1 hover:p-1.5 border border-gray-800 hover:border-gray-600 transition-all duration-300 shadow-lg">
           <img src="src/assets/profile-pic.png" alt="Profile" className="rounded-full w-full h-full object-cover" />
         </div>

@@ -2,7 +2,7 @@ import { FaBookOpen, FaCalendar } from "react-icons/fa";
 
 function LearningPathCard({ title, source, period, description, topics }) {
     return (
-        <div className="bg-dark rounded-lg p-6 border border-gray-800 hover:border-blue-500 transition-all">
+        <div className="bg-dark rounded-lg w-[90%] p-6 border border-gray-800 hover:border-blue-500 transition-all">
             <div className="flex justify-between items-start mb-4">
                 <div>
                     <h3 className="text-xl font-semibold text-white">{title}</h3>
