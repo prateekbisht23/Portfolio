@@ -1,25 +1,59 @@
-import { FaGithub } from 'react-icons/fa';
+import { FaGithub, FaRegFolder } from 'react-icons/fa';
 
 function ProjectCard({ title, description, technologies, number }) {
   return (
-    <div className="bg-dark rounded-lg p-6 hover:border-primary border border-transparent transition-all">
-      <div className="flex justify-between items-start mb-4">
-        <h3 className="text-xl font-semibold">{title}</h3>
+    <div
+      className="rounded-xl p-6 hover:border-primary border border-[rgb(70,70,70)] 
+                 transition-all backdrop-blur-2xl bg-[rgb(23,23,23)] 
+                 flex flex-col justify-between overflow-hidden"
+    >
+      {/* Title & Number */}
+      <div className="flex justify-between items-center mb-5">
+        <div className="flex items-center gap-3">
+          <FaRegFolder className="text-blue-400 text-lg" />
+          <h3 className="text-lg font-light text-[rgb(229,229,229)] truncate">
+            {title}
+          </h3>
+        </div>
         <span className="text-gray-500">0{number}</span>
       </div>
-      <p className="text-gray-400 mb-4">{description}</p>
-      <div className="flex gap-2 mb-4">
-        {technologies.map((tech, index) => (
-          <span
-            key={index}
-            className="px-2 py-1 text-sm rounded bg-gray-800 text-gray-300"
-          >
-            {tech}
-          </span>
-        ))}
+
+      {/* Description - Fixed size */}
+      <p className="text-gray-400 text-sm leading-relaxed line-clamp-3 mb-5">
+        {description}
+      </p>
+
+      <div className="flex gap-2 flex-wrap mb-5">
+        {technologies.map((tech, index) => {
+
+          const colorMap = [
+            { bg: "bg-[rgb(63,23,25)]", text: "text-[rgb(255,180,186)]" }, // Dark red → Light pink
+            { bg: "bg-[rgb(29,42,69)]", text: "text-[rgb(173,216,230)]" }, // Dark blue → Light blue
+            { bg: "bg-[rgb(18,60,36)]", text: "text-[rgb(144,238,144)]" }, // Dark green → Light green
+            { bg: "bg-[rgb(67,55,18)]", text: "text-[rgb(255,236,139)]" }, // Dark yellow → Light yellow
+            { bg: "bg-[rgb(55,25,69)]", text: "text-[rgb(216,191,216)]" }, // Dark purple → Light lavender
+          ];
+
+          const randomColor = colorMap[Math.floor(Math.random() * colorMap.length)];
+
+
+          return (
+            <span
+              key={index}
+              className={`px-3 py-1 text-xs font-extralight ${randomColor.bg} ${randomColor.text} 
+                    rounded-full shadow-md transition-all hover:scale-105`}
+            >
+              {tech}
+            </span>
+          );
+        })}
       </div>
-      <div className="flex justify-between items-center">
-        <a href="#" className="text-blue-500 hover:underline">View Project →</a>
+
+      {/* Footer - Link & Icon */}
+      <div className="flex justify-between items-center mt-auto">
+        <a href="#" className="text-[rgb(85,158,254)] hover:underline text-sm">
+          View Project →
+        </a>
         <FaGithub className="text-gray-400 hover:text-white cursor-pointer" />
       </div>
     </div>
@@ -51,10 +85,19 @@ function Projects() {
   ];
 
   return (
-    <div className="grid grid-cols-2 gap-6">
-      {projects.map((project, index) => (
-        <ProjectCard key={index} {...project} number={index + 1} />
-      ))}
+    <div className="w-[100vw] my-30 py-15 px-15 bg-[rgb(38,38,38)]">
+      <div className="w-full border-b border-[#474747] flex items-center mb-10">
+        <div className="px-4 py-2 bg-[rgb(64,64,64)] border border-[#373737] flex items-center space-x-4">
+          <span className="text-[#d8d8d8] text-sm font-extralight">projects.jsx</span>
+          <div className="w-2 h-2 bg-[rgb(115,115,115)] rounded-full"></div>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-6">
+        {projects.map((project, index) => (
+          <ProjectCard key={index} {...project} number={index + 1} />
+        ))}
+      </div>
     </div>
   );
 }

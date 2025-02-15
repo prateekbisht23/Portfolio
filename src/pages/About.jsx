@@ -5,7 +5,7 @@ function About() {
     <div className="w-[100vw] my-10 bg-[rgb(38,38,38)] p-15">
       <div className="w-full border-b border-[#474747] flex items-center mb-10">
         <div className="px-4 py-2 bg-[rgb(64,64,64)] border border-[#373737] flex items-center space-x-4">
-          <span className="text-[#e2dfdf] text-sm font-extralight">about.js</span>
+          <span className="text-[#d8d8d8] text-sm font-extralight">about.jsx</span>
           <div className="w-2 h-2 bg-[rgb(115,115,115)] rounded-full"></div>
         </div>
       </div>

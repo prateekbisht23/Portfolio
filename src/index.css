@@ -3,3 +3,14 @@
 html {
     scroll-behavior: smooth;
 }
+
+.Toastify__toast {
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+  
+.Toastify__close-button {
+    display: none !important;
+}

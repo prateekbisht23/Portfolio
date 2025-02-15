@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-
 function Navbar() {
   return (
     <nav className="border-b border-gray-800">
@@ -11,13 +9,12 @@ function Navbar() {
             <a href="#about" className="hover:text-primary transition-colors">About</a>
             <a href="#skills" className="hover:text-primary transition-colors">Skills</a>
             <a href="#projects" className="hover:text-primary transition-colors">Projects</a>
-            <a href="#experience" className="hover:text-primary transition-colors">Experience</a>
-            <a href="#blog" className="hover:text-primary transition-colors">Blog</a>
-            <a href="#contact" className="hover:text-primary transition-colors">Contact</a>
-          </div>
+            <a href="#learning-path" className="hover:text-primary transition-colors">LearningPath</a>
+          <a href="#contact" className="hover:text-primary transition-colors">Contact</a>
         </div>
       </div>
-    </nav>
+    </div>
+    </nav >
 
   );
 }

@@ -9,6 +9,10 @@ import Projects from './pages/Projects';
 import Experience from './pages/Experience';
 import Blog from './pages/Blog';
 import Contact from './pages/Contact';
+import LearningPath from './pages/LearningPath';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 function App() {
   return (
@@ -30,12 +34,16 @@ function App() {
             <section id="projects">
               <Projects />
             </section>
-            <section id="experience">
+            {/* <section id="experience">
               <Experience />
-            </section>
-            <section id="blog">
+            </section> */}
+            {/* <section id="blog">
               <Blog />
+            </section> */}
+            <section id="learning-path">
+              <LearningPath />
             </section>
+            <ToastContainer />
             <section id="contact">
               <Contact />
             </section>
