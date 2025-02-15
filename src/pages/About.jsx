@@ -1,8 +1,11 @@
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { motion } from "framer-motion";
 
 function About() {
   return (
-    <div className="w-[100vw] my-10 bg-[rgb(38,38,38)] p-15">
+    <motion.div initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, ease: "easeOut" }} className="w-[100vw] my-10 bg-[rgb(38,38,38)] p-15">
       <div className="w-full border-b border-[#474747] flex items-center mb-10 hover:cursor-pointer">
         <div className="px-4 py-2 bg-[rgb(64,64,64)] border border-[#373737] flex items-center space-x-4 group">
           <span className="text-[#d8d8d8] text-sm font-extralight">about.jsx</span>
@@ -27,58 +30,7 @@ function About() {
             <p><span className='text-[rgb(9,194,102)]'>education:</span> <span className='text-[rgb(248,138,0)]'>'Computer Science Engineering, GGSIPU, 2022-2026'</span>,</p>
           </div>
           <p>&#125;;</p>
-
-          {/* <div className="flex gap-4">
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">
-              <FaGithub size={24} />
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">
-              <FaLinkedin size={24} />
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">
-              <FaTwitter size={24} />
-            </a>
-          </div> */}
         </div>
-
-        {/* <div className="space-y-6">
-          <div className="bg-dark rounded-lg p-6 border border-gray-800 hover:border-gray-700 transition-colors">
-            <h3 className="text-xl font-semibold mb-4">Technologies I Love</h3>
-            <div className="space-y-2">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                <span>JavaScript (ES6+)</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                <span>React.js</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                <span>Node.js</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                <span>TypeScript</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                <span>MongoDB</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-dark rounded-lg p-6 border border-gray-800 hover:border-gray-700 transition-colors">
-            <h3 className="text-xl font-semibold mb-4">Education</h3>
-            <div className="space-y-4">
-              <div>
-                <h4 className="font-medium">Computer Science, BS</h4>
-                <p className="text-gray-400">University of California</p>
-                <p className="text-sm text-gray-500">2013 - 2017</p>
-              </div>
-            </div>
-          </div>
-        </div> */}
 
         <div className="bg-[rgb(38,38,38)] rounded-lg p-6 border border-[rgb(61,61,61)] hover:border-[hsl(0,1%,31%)] transition-colors flex justify-center gap-70">
           <div className="flex flex-col gap-3 items-center justify-center">
@@ -96,7 +48,7 @@ function About() {
         </div>
 
       </div>
-    </div>
+    </motion.div>
   );
 }
 

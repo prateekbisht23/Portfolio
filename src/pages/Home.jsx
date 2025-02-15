@@ -1,14 +1,16 @@
 import { useState } from 'react';
 import { FaGithub, FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa';
 import { Mail, Coffee } from "lucide-react";
+import { motion } from "framer-motion";
 
-const text = "hi";
 
 function Home() {
   const [isToggled, setIsToggled] = useState(false);
 
   return (
-    <div className="min-h-[calc(100vh-3.5rem)] w-[100vw] flex justify-around px-7 py-30 mt-10">
+    <motion.div initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, ease: "easeOut" }} className="min-h-[calc(100vh-3.5rem)] w-[100vw] flex justify-around px-7 py-30 mt-10">
       <div className="space-y-8 mt-4">
         <div className="flex items-center gap-3.5 mb-4">
           <span className="w-3 h-3 rounded-full bg-green-500 animate-pulse"></span>
@@ -102,7 +104,7 @@ function Home() {
         </div>
       </div>
 
-    </div>
+    </motion.div>
   );
 }
 
