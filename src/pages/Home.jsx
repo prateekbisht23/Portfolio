@@ -66,7 +66,7 @@ function Home() {
       </div>
       <div className="gap-4 flex flex-col items-center justify-center bg-[rgb(20,20,20)] border border-[#292929] shadow-sm shadow-[rgba(85,159,255,0.3)] px-6 rounded-xl">
         <div className="bg-[rgb(24,24,24)] rounded-full w-40 h-40 p-1 hover:p-1.5 border border-gray-800 hover:border-gray-600 transition-all duration-300 shadow-lg">
-          <img src="src/assets/profile-pic.png" alt="Profile-pic" className="rounded-full w-full h-full object-cover" />
+          <img src="/assets/profile-pic.png" alt="Profile-pic" className="rounded-full w-full h-full object-cover" />
         </div>
         <div className="bg-[rgb(24,24,24)] rounded-xl p-6 border border-gray-800 hover:border-gray-600 transition-all duration-300 shadow-lg">
           <div className="space-y-1">
