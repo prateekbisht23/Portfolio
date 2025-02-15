@@ -1,12 +1,15 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { FaGithub, FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { Mail, Coffee } from "lucide-react";
+
+const text = "hi";
 
 function Home() {
-  const [isHovered, setIsHovered] = useState(false);
+  const [isToggled, setIsToggled] = useState(false);
 
   return (
-    <div className="min-h-[calc(100vh-3.5rem)] flex flex-col justify-center">
-      <div className="space-y-8 ml-25">
+    <div className="min-h-[calc(100vh-3.5rem)] w-[100vw] flex justify-around px-7 py-30 mt-10">
+      <div className="space-y-8 mt-4">
         <div className="flex items-center gap-3.5 mb-4">
           <span className="w-3 h-3 rounded-full bg-green-500 animate-pulse"></span>
           <div className="px-2 py-1 text-sm rounded-full bg-green-500/20 text-green-500">
@@ -14,14 +17,14 @@ function Home() {
           </div>
         </div>
 
-        <h1 className="text-6xl font-bold flex gap-7">
+        <h1 className="text-6xl font-bold flex gap-7 select-none">
           <span className="text-blue-500">&lt;</span>
           <div
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            className="hover:cursor-pointer"
+            onClick={() => setIsToggled(!isToggled)}
           >
-            {isHovered ? (
-              <span className="text-gray-400 transition-opacity duration-300 "> Hello World! </span>
+            {isToggled ? (
+              <span className="text-gray-400 transition-opacity duration-300"> Hello World! </span>
             ) : (
               " Prateek Bisht "
             )}
@@ -48,7 +51,57 @@ function Home() {
           </div>
           <div className="text-sm">{'}'}</div>
         </div>
+        <div className="text-gray-400 font-mono">
+          <p>
+            <span className="text-gray-500">// Reminder: Express better!!</span>
+          </p>
+          <p>
+            <span className="text-purple-400">const</span> advice =
+            <span className="text-green-400"> "Use '!' more often!!"</span>;
+          </p>
+        </div>
+
       </div>
+      <div className="gap-4 flex flex-col items-center justify-center bg-[rgb(20,20,20)] border border-[#292929] shadow-lg shadow-[rgb(25,25,25)] px-6 rounded-xl">
+        <div className="bg-[rgb(24,24,24)] rounded-full w-40 h-40 p-1 hover:p-1.5 border border-gray-800 hover:border-gray-600 transition-all duration-300 shadow-lg">
+          <img src="src/assets/profile-pic.png" alt="Profile" className="rounded-full w-full h-full object-cover" />
+        </div>
+        <div className="bg-[rgb(24,24,24)] rounded-xl p-6 border border-gray-800 hover:border-gray-600 transition-all duration-300 shadow-lg">
+          <div className="space-y-1">
+            <p className="text-sm text-gray-500">STUDENT</p>
+            <h4 className="font-medium text-gray-300 text-lg">Computer Science, B.Tech.</h4>
+            <p className="text-gray-400 text-base">GGSIPU, Delhi</p>
+            <div className='flex justify-between'>
+              <p className="text-sm text-gray-500 italic">2022 - 2026</p>
+              <p className="text-sm text-gray-500 hover:cursor-pointer">Resume</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-[rgb(24,24,24)] w-[100%] rounded-lg p-6 border border-gray-800 hover:border-gray-700 transition-colors">
+          <div className="flex justify-evenly">
+            <a href="https://github.com/prateekbisht23" target="_blank" className="text-gray-400 hover:text-white transition-colors">
+              <FaGithub size={24} />
+            </a>
+            <a href="https://www.linkedin.com/in/prateek-bisht-7a062a258/" target="_blank" className="text-gray-400 hover:text-white transition-colors">
+              <FaLinkedin size={24} />
+            </a>
+            <a href="mailto:prateekbisht04@gmail.com" target="_blank" className="text-gray-400 hover:text-white transition-colors">
+              <Mail size={24} />
+            </a>
+            <a href="https://www.instagram.com/__prateek.23_/" target="_blank" className="text-gray-400 hover:text-white transition-colors">
+              <FaInstagram size={24} />
+            </a>
+            <a href="https://x.com/PrateekB04" target="_blank" className="text-gray-400 hover:text-white transition-colors">
+              <FaTwitter size={24} />
+            </a>
+            <a href="https://buymeacoffee.com/prateekbisht" target="_blank" className="text-gray-400 hover:text-white transition-colors">
+              <Coffee size={24} />
+            </a>
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 }

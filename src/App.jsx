@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Explorer from './components/Explorer';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -17,9 +16,7 @@ import "react-toastify/dist/ReactToastify.css";
 function App() {
   return (
     <Router>
-      {/* <Explorer /> */}
-      <div className="min-h-screen flex bg-[#161616] text-gray-200 font-mono">
-        <div className="flex-1">
+        <div className="min-h-screen w-[100%] flex-col bg-[#161616] text-gray-200 font-mono select-none">
           <Navbar />
           <main className="container">
             <section id="home">
@@ -50,7 +47,6 @@ function App() {
           </main>
           <Footer />
         </div>
-      </div>
     </Router>
   );
 }

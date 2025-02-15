@@ -2,6 +2,8 @@ import { useState } from "react";
 import emailjs from "emailjs-com";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Mail, MapPin, Terminal, Lightbulb } from "lucide-react";
+import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 
 const CustomToast = ({ message }) => (
   <div className="flex items-center bg-[rgb(38,38,38)] text-gray-200 px-4 py-3 rounded-lg border border-[#999999] shadow-lg">
@@ -33,7 +35,8 @@ function Contact() {
         "x2mgppKXLCck1C6eh"
       )
       .then(() => {
-        toast(<CustomToast message={`>_ Heads up!\nYour inquiry has been sent`} />, {
+        const message = `${<Terminal />} Heads up!\nYour inquiry has been sent`;
+        toast(<CustomToast message={`${message}`} />, {
           position: "top-right",
           autoClose: 3000,
           hideProgressBar: true,
@@ -46,7 +49,8 @@ function Contact() {
         setFormData({ name: "", email: "", subject: "", message: "" });
       })
       .catch((error) => {
-        toast(<CustomToast message={">_ Something went wrong!\nPlease try again."} />, {
+        const message = `${<Terminal />} Something went wrong!\nPlease try again.`
+        toast(<CustomToast message={`${message}`} />, {
           position: "top-right",
           autoClose: 3000,
           hideProgressBar: true,
@@ -60,89 +64,141 @@ function Contact() {
   };
 
   return (
-    <div className="w-[100vw] my-30 py-8 px-15">
-      <div className="w-full border-b border-[#474747] flex items-center mb-10">
-        <div className="px-4 py-2 bg-[rgb(64,64,64)] border border-[#373737] flex items-center space-x-4">
+    <div className="w-[100vw] my-30 py-8 px-15 select-none">
+      <div className="w-full border-b border-[#474747] flex items-center mb-10 hover:cursor-pointer">
+        <div className="px-4 py-2 bg-[rgb(64,64,64)] border border-[#373737] flex items-center space-x-4 group">
           <span className="text-[#d8d8d8] text-sm font-extralight">contact.jsx</span>
-          <div className="w-2 h-2 bg-[rgb(115,115,115)] rounded-full"></div>
+          <div className="w-2 h-2 rounded-full bg-[rgb(115,115,115)] group-hover:bg-transparent relative flex items-center justify-center transition-all">
+            <span className="hidden group-hover:block text-[16px] text-[#d8d8d8] absolute">×</span>
+          </div>
         </div>
       </div>
-      <div className="flex flex-col space-y-7 mx-45">
-        <div className="flex flex-col text-sm text-[#4f4f4f]">
-          <span>/**</span>
-          <span className="ml-2.5">* Contact Form Component</span>
-          <span className="ml-2.5">* @returns &#123;JSX.Element&#125;</span>
+      <div className="flex flex-col space-y-7 ml-25">
+        {/* Comment Block */}
+        <div className="text-sm text-[#4f4f4f]">
+          <span>/**</span><br />
+          <span className="ml-2.5">* Contact Form Component</span><br />
+          <span className="ml-2.5">* @returns &#123;JSX.Element&#125;</span><br />
           <span className="ml-2.5">*/</span>
         </div>
-        <div className="w-[90%] bg-[rgb(38,38,38)] p-8 rounded-lg shadow-lg border border-[#474747]">
-          <form className="space-y-6" onSubmit={handleSubmit}>
-            <div className="grid grid-cols-2 gap-6">
+
+        <div className="flex gap-10">
+          {/* Contact Form */}
+          <div className="w-[65%] bg-[rgb(38,38,38)] p-8 rounded-lg shadow-lg border border-[#474747]">
+            <form className="space-y-6" onSubmit={handleSubmit}>
+              <div className="grid grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-gray-400 mb-2">const name = </label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="'Your Name'"
+                    className="w-full bg-[rgb(23,23,23)] border border-gray-700 rounded-lg px-4 py-2 focus:border-blue-500 focus:outline-none select-none"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-gray-400 mb-2">const email = </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="'your@email.com'"
+                    className="w-full bg-[rgb(23,23,23)] border border-gray-700 rounded-lg px-4 py-2 focus:border-blue-500 focus:outline-none"
+                    required
+                  />
+                </div>
+              </div>
+
               <div>
-                <label className="block text-gray-400 mb-2 font-extralight">const name = </label>
+                <label className="block text-gray-400 mb-2">const subject = </label>
                 <input
                   type="text"
-                  name="name"
-                  value={formData.name}
+                  name="subject"
+                  value={formData.subject}
                   onChange={handleChange}
-                  placeholder="'Your Name'"
+                  placeholder="'Project Inquiry'"
                   className="w-full bg-[rgb(23,23,23)] border border-gray-700 rounded-lg px-4 py-2 focus:border-blue-500 focus:outline-none"
                   required
                 />
               </div>
+
               <div>
-                <label className="block text-gray-400 mb-2">const email = </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
+                <label className="block text-gray-400 mb-2">const message = </label>
+                <textarea
+                  name="message"
+                  value={formData.message}
                   onChange={handleChange}
-                  placeholder="'your@email.com'"
-                  className="w-full bg-[rgb(23,23,23)] border border-gray-700 rounded-lg px-4 py-2 focus:border-blue-500 focus:outline-none"
+                  placeholder="'Your message here...'"
+                  rows="6"
+                  className="w-full bg-[rgb(23,23,23)] border border-gray-700 rounded-lg px-4 py-3 focus:border-blue-500 focus:outline-none"
                   required
-                />
+                ></textarea>
+              </div>
+
+              <div className="flex justify-end">
+                <button
+                  type="submit"
+                  className="bg-[rgb(9,105,230)] text-[#dddddd] py-1.5 px-5 rounded-lg 
+            hover:bg-[rgb(5,91,205)] hover:cursor-pointer hover:text-[#dadada] transition-colors flex items-center 
+            justify-center gap-2 font-extralight"
+                >
+                  Send Message <span className="text-2xl">&rarr;</span>
+                </button>
+              </div>
+            </form>
+            <ToastContainer />
+          </div>
+
+          {/* Contact Info Boxes */}
+          <div className="flex flex-col justify-evenly w-[20%]">
+            {/* Email */}
+            <div className="bg-[rgb(38,38,38)] border border-[rgb(64,64,64)] rounded-lg shadow-lg px-4 py-6 flex flex-col justify-between items-center space-y-3">
+              <div className="flex items-center gap-2"><Mail size={17} className="text-[rgb(85,159,255)]" /> Email</div>
+              <a href="mailto:prateekbisht04@gmail.com" target="_blank" className="text-sm text-[rgb(85,159,255)] hover:underline">
+                prateekbisht04@gmail.com
+              </a>
+            </div>
+
+            {/* Location */}
+            <div className="bg-[rgb(38,38,38)] border border-[rgb(64,64,64)] rounded-lg shadow-lg px-4 py-6 flex flex-col justify-between items-center space-y-3">
+              <div className="flex items-center gap-2"><MapPin size={19} className="text-[rgb(0,231,122)]" /> Location</div>
+              <a href="https://maps.app.goo.gl/ASfWKxUyNsi7q6J58" target="_blank" className="text-sm text-[rgb(140,140,140)] hover:text-white transition-colors duration-200">
+                Greater Noida, India
+              </a>
+            </div>
+
+            {/* Social */}
+            <div className="bg-[rgb(38,38,38)] border border-[rgb(64,64,64)] rounded-lg shadow-lg px-4 py-6 flex flex-col justify-between items-center space-y-3">
+              <div className="flex items-center gap-2"><Terminal size={18} className="text-[rgb(205,112,255)]" /> Social</div>
+              <div className="flex gap-3 text-[rgb(150,150,150)]">
+                <a href="https://github.com/prateekbisht23" target="_blank" className="hover:text-white transition-colors duration-200">
+                  <FaGithub size={20} />
+                </a>
+                <a href="https://www.linkedin.com/in/prateek-bisht-7a062a258/" target="_blank" className="hover:text-white transition-colors duration-200">
+                  <FaLinkedin size={20} />
+                </a>
+                <a href="https://www.instagram.com/__prateek.23_/" target="_blank" className="hover:text-white transition-colors duration-200">
+                  <FaInstagram size={21} />
+                </a>
               </div>
             </div>
 
-            <div>
-              <label className="block text-gray-400 mb-2">const subject = </label>
-              <input
-                type="text"
-                name="subject"
-                value={formData.subject}
-                onChange={handleChange}
-                placeholder="'Project Inquiry'"
-                className="w-full bg-[rgb(23,23,23)] border border-gray-700 rounded-lg px-4 py-2 focus:border-blue-500 focus:outline-none"
-                required
-              />
+            {/* Fun Fact */}
+            <div className="bg-[rgb(38,38,38)] border border-[rgb(64,64,64)] rounded-lg shadow-lg px-4 py-6 flex flex-col justify-between items-center space-y-3">
+              <div className="flex items-center gap-2"><Lightbulb size={19} className="text-yellow-400" /> Fun Fact</div>
+              <p className="text-sm text-[rgb(140,140,140)] text-center">
+                I use '!!' so much that people think it's part of my syntax!!
+              </p>
             </div>
+          </div>
 
-            <div>
-              <label className="block text-gray-400 mb-2">const message = </label>
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                placeholder="'Your message here...'"
-                rows="6"
-                className="w-full bg-[rgb(23,23,23)] border border-gray-700 rounded-lg px-4 py-3 focus:border-blue-500 focus:outline-none"
-                required
-              ></textarea>
-            </div>
-
-            <div className="flex justify-end">
-              <button
-                type="submit"
-                className="bg-blue-600 text-white py-2 px-6 rounded-lg 
-                hover:bg-blue-700 transition-colors flex items-center 
-                justify-center gap-2 font-extralight"
-              >
-                Send Message <span className="text-2xl">&rarr;</span>
-              </button>
-            </div>
-          </form>
-          <ToastContainer />
         </div>
       </div>
+
     </div>
   );
 }

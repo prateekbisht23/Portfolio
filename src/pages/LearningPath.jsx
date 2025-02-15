@@ -63,10 +63,12 @@ function LearningPath() {
 
     return (
         <div className="w-[100vw] my-30 py-8 px-18">
-            <div className="w-full border-b border-[#474747] flex items-center mb-10">
-                <div className="px-4 py-2 bg-[rgb(64,64,64)] border border-[#373737] flex items-center space-x-4">
+            <div className="w-full border-b border-[#474747] flex items-center mb-10 hover:cursor-pointer">
+                <div className="px-4 py-2 bg-[rgb(64,64,64)] border border-[#373737] flex items-center space-x-4 group">
                     <span className="text-[#d8d8d8] text-sm font-extralight">learningPath.jsx</span>
-                    <div className="w-2 h-2 bg-[rgb(115,115,115)] rounded-full"></div>
+                    <div className="w-2 h-2 rounded-full bg-[rgb(115,115,115)] group-hover:bg-transparent relative flex items-center justify-center transition-all">
+                        <span className="hidden group-hover:block text-[16px] text-[#d8d8d8] absolute">×</span>
+                    </div>
                 </div>
             </div>
 

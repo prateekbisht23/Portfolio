@@ -7,10 +7,11 @@ function SkillBar({ name, percentage, color }) {
       </div>
       <div className="bg-gray-800 rounded-full">
         <div
-          className="h-2 rounded-full bg-gradient-to-r"
+          className="h-1.5 rounded-full bg-gradient-to-r"
           style={{
             width: `${percentage}%`,
-            backgroundColor: color
+            backgroundColor: color,
+            opacity: 0.7
           }}
         />
       </div>
@@ -21,20 +22,7 @@ function SkillBar({ name, percentage, color }) {
 function SkillSection({ title, skills, color }) {
   return (
     <div
-      className="rounded-lg p-4 bg-[rgb(23,23,23)] border border-[rgb(50,50,50)] transition-all"
-      style={{
-        borderColor: "rgb(50,50,50)",
-        transition: "box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out",
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = null;
-        e.currentTarget.style.boxShadow = `0px 0px 3px ${color}`;
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = "rgb(50,50,50)";
-        e.currentTarget.style.boxShadow = "none";
-      }}
-    >
+      className="rounded-lg p-4 bg-[rgb(23,23,23)] border border-[rgb(55,55,55)] hover:border-[rgb(65,65,65)] transition-all ">
       {/* Use the thinnest font */}
       <h3 className="text-lg font-thin text-gray-300 mb-4">{title}</h3>
       <div className="space-y-2">
@@ -61,9 +49,9 @@ function Skills() {
   ];
 
   const developerTools = [
-    { name: "Node.js", level: 88 },
-    { name: "Python", level: 82 },
-    { name: "PostgreSQL", level: 85 },
+    { name: "Git & GitHub", level: 90 },
+    { name: "VS Code", level: 95 },
+    { name: "Postman", level: 88 },
   ];
 
   const softSkills = [
@@ -74,10 +62,12 @@ function Skills() {
 
   return (
     <div className="w-[100vw] my-30 py-8 px-15">
-      <div className="w-full border-b border-[#474747] flex items-center mb-10">
-        <div className="px-4 py-2 bg-[rgb(64,64,64)] border border-[#373737] flex items-center space-x-4">
+      <div className="w-full border-b border-[#474747] flex items-center mb-10 hover:cursor-pointer">
+        <div className="px-4 py-2 bg-[rgb(64,64,64)] border border-[#373737] flex items-center space-x-4 group">
           <span className="text-[#d8d8d8] text-sm font-extralight">skills.jsx</span>
-          <div className="w-2 h-2 bg-[rgb(115,115,115)] rounded-full"></div>
+          <div className="w-2 h-2 rounded-full bg-[rgb(115,115,115)] group-hover:bg-transparent relative flex items-center justify-center transition-all">
+            <span className="hidden group-hover:block text-[16px] text-[#d8d8d8] absolute">×</span>
+          </div>
         </div>
       </div>
 
@@ -95,7 +85,7 @@ function Skills() {
         </div>
 
         {/* Updated Grid Layout */}
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-2 gap-7 px-15">
           <SkillSection title="Frontend Development" skills={frontendSkills} color="#3b82f6" />
           <SkillSection title="Backend Development" skills={backendSkills} color="#22c55e" />
           <SkillSection title="Developer Tools" skills={developerTools} color="#f59e0b" />
