@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import { FaGithub, FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa';
 import { Mail, Coffee } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import ResumePopUp from '../components/ResumePopUp';
 
+const resume = "/assets/resume.pdf";
 
 function Home() {
   const [isToggled, setIsToggled] = useState(false);
+  const [popupContent, setPopupContent] = useState(null);
 
   return (
     <motion.div initial={{ opacity: 0, y: -20 }}
@@ -75,7 +78,7 @@ function Home() {
             <p className="text-gray-400 text-base">GGSIPU, Delhi</p>
             <div className='flex justify-between'>
               <p className="text-sm text-gray-500 italic">2022 - 2026</p>
-              <p className="text-sm text-gray-500 hover:cursor-pointer">Resume</p>
+              <a href="#" onClick={(e) => { e.preventDefault(); setPopupContent(true); }} className='text-sm text-gray-500 hover:cursor-pointer hover:text-gray-300'>Resume</a>
             </div>
           </div>
         </div>
@@ -103,6 +106,10 @@ function Home() {
           </div>
         </div>
       </div>
+
+      <AnimatePresence>
+        {popupContent && <ResumePopUp onClose={() => setPopupContent(false)} />}
+      </AnimatePresence>
 
     </motion.div>
   );
