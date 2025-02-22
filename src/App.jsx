@@ -16,37 +16,37 @@ import "react-toastify/dist/ReactToastify.css";
 function App() {
   return (
     <Router>
-        <div className="min-h-screen w-[100%] flex-col bg-[#161616] text-gray-200 font-mono select-none">
-          <Navbar />
-          <main className="container">
-            <section id="home">
-              <Home />
-            </section>
-            <section id="about">
-              <About />
-            </section>
-            <section id="skills">
-              <Skills />
-            </section>
-            <section id="projects">
-              <Projects />
-            </section>
-            {/* <section id="experience">
+      <div className="min-h-screen w-screen flex flex-col bg-[#161616] text-gray-200 font-mono select-none">
+        <Navbar />
+        <main className="w-full max-w-none">
+          <section id="home">
+            <Home />
+          </section>
+          <section id="about">
+            <About />
+          </section>
+          <section id="skills">
+            <Skills />
+          </section>
+          <section id="projects">
+            <Projects />
+          </section>
+          {/* <section id="experience">
               <Experience />
             </section> */}
-            {/* <section id="blog">
+          {/* <section id="blog">
               <Blog />
             </section> */}
-            <section id="learning-path">
-              <LearningPath />
-            </section>
-            <ToastContainer />
-            <section id="contact">
-              <Contact />
-            </section>
-          </main>
-          <Footer />
-        </div>
+          <section id="learningpath">
+            <LearningPath />
+          </section>
+          <ToastContainer />
+          <section id="contact">
+            <Contact />
+          </section>
+        </main>
+        <Footer />
+      </div>
     </Router>
   );
 }

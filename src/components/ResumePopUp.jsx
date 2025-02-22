@@ -4,9 +4,12 @@ import resumePDF from "../assets/Resume_Prateek.pdf";
 import { FiDownload } from "react-icons/fi";
 
 const ResumePopUp = ({ onClose }) => {
+
     useEffect(() => {
+        document.documentElement.style.overflow = "hidden";
         document.body.style.overflow = "hidden";
         return () => {
+            document.documentElement.style.overflow = "auto";
             document.body.style.overflow = "auto";
         };
     }, []);
@@ -20,7 +23,7 @@ const ResumePopUp = ({ onClose }) => {
             exit={{ opacity: 0 }}
         >
             <motion.div
-                className="w-[60vw] h-[90vh] bg-[rgb(23,23,23)] rounded-lg border border-[rgb(36,36,36)] shadow-lg flex flex-col overflow-hidden"
+                className="w-[90vw] h-[75vh] md:w-[60vw] md:h-[90vh] bg-[rgb(23,23,23)] rounded-lg border border-[rgb(36,36,36)] shadow-lg flex flex-col overflow-hidden"
                 onClick={(e) => e.stopPropagation()}
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
@@ -42,7 +45,7 @@ const ResumePopUp = ({ onClose }) => {
 
                 {/* PDF Display */}
                 <div className="flex-1">
-                    <embed src={`${resumePDF}#toolbar=0&navpanes=0&scrollbar=0`} type="application/pdf" className="w-full h-full" />
+                    <iframe src={`${resumePDF}#toolbar=0&navpanes=0&scrollbar=0`} type="application/pdf" className="w-full h-full" />
                 </div>
             </motion.div>
         </motion.div>

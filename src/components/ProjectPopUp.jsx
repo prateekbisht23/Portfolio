@@ -6,11 +6,13 @@ const ProjectPopUp = ({ content, onClose }) => {
 
     const isWebsite = content.startsWith("http");
 
-    // Disable scrolling when pop-up is open
+
     useEffect(() => {
-        document.body.classList.add("no-scroll");
+        document.documentElement.style.overflow = "hidden";
+        document.body.style.overflow = "hidden";
         return () => {
-            document.body.classList.remove("no-scroll");
+            document.documentElement.style.overflow = "auto";
+            document.body.style.overflow = "auto";
         };
     }, []);
 
