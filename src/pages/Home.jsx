@@ -4,6 +4,7 @@ import { Mail, Coffee } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ResumePopUp from '../components/ResumePopUp';
 import resumePDF from "../assets/Resume_Prateek.pdf";
+import { href } from 'react-router-dom';
 
 function Home() {
   const [isToggled, setIsToggled] = useState(false);
@@ -18,11 +19,13 @@ function Home() {
     >
       {/* Left Content */}
       <div className="space-y-6 text-center md:text-left">
-        <div className="flex items-center ml-10 md:ml-0 justify-start gap-3.5">
+        <div className="flex items-center ml-10 md:ml-0 justify-start gap-3">
           <span className="w-3 h-3 rounded-full bg-green-500 animate-pulse"></span>
-          <div className="px-2 py-1 text-sm rounded-full bg-green-500/20 text-green-500">
-            Available for hire
-          </div>
+          <a href="https://www.linkedin.com/in/prateek-bisht-7a062a258/">
+            <div className="px-2 py-1 text-sm rounded-full bg-green-500/20 text-green-500">
+              Available for hire
+            </div>
+          </a>
         </div>
 
         <h1 className="text-3xl justify-self-center md:text-6xl font-bold flex gap-3 select-none">
