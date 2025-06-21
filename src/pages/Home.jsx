@@ -21,7 +21,7 @@ function Home() {
       <div className="space-y-6 text-center md:text-left">
         <div className="flex items-center ml-10 md:ml-0 justify-start gap-3">
           <span className="w-3 h-3 rounded-full bg-green-500 animate-pulse"></span>
-          <a href="https://www.linkedin.com/in/prateek-bisht-7a062a258/">
+          <a href="https://www.linkedin.com/in/prateek-bisht-7a062a258/" target="_blank">
             <div className="px-2 py-1 text-sm rounded-full bg-green-500/20 text-green-500">
               Available for hire
             </div>
