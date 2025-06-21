@@ -37,9 +37,9 @@ function App() {
           {/* <section id="blog">
               <Blog />
             </section> */}
-          <section id="learningpath">
+          {/* <section id="learningpath">
             <LearningPath />
-          </section>
+          </section> */}
           <ToastContainer />
           <section id="contact">
             <Contact />

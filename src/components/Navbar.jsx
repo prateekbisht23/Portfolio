@@ -24,7 +24,6 @@ function Navbar() {
       about: isMobile ? 100 : 80,
       skills: isMobile ? 10 : 20,
       projects: isMobile ? 20 : 100,
-      learningpath: isMobile ? 40 : 60,
       contact: isMobile ? 65 : 30,
     };
 
@@ -83,7 +82,7 @@ function Navbar() {
 
             {/* Desktop Menu */}
             <div className="hidden md:flex gap-6">
-              {["Home", "About", "Skills", "Projects", "learningPath", "Contact"].map((id) => (
+              {["Home", "About", "Skills", "Projects", "Contact"].map((id) => (
                 <span
                   key={id}
                   className="text-gray-400 hover:text-gray-200 hover:lowercase transition-all-700 cursor-pointer capitalize"
@@ -107,7 +106,7 @@ function Navbar() {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden bg-[rgb(24,24,24)] py-4 px-6">
-            {["Home", "About", "Skills", "Projects", "LearningPath", "Contact"].map((id) => (
+            {["Home", "About", "Skills", "Projects", "Contact"].map((id) => (
               <span
                 key={id}
                 className="block py-2 px-3 text-gray-400 hover:text-gray-200 hover:lowercase font-extralight transition-all cursor-pointer"

@@ -7,12 +7,13 @@ function About() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="w-full my-5 bg-[rgb(38,38,38)] px-4 sm:px-10 py-20"
+      className="w-full my-5 bg-[rgb(38,38,38)] px-4 sm:px-35 py-20"
     >
+
       {/* File Tab */}
       <div className="w-full border-b border-[#474747] flex items-center mb-6 hover:cursor-pointer">
         <div className="px-4 py-2 bg-[rgb(64,64,64)] border border-[#373737] flex items-center space-x-4 group">
-          <span className="text-[#d8d8d8] text-xs sm:text-sm font-extralight">about.jsx</span>
+          <span className="text-[#d8d8d8] text-xs sm:text-sm font-extralight">about.env</span>
           <div className="w-2 h-2 rounded-full bg-[rgb(115,115,115)] group-hover:bg-transparent relative flex items-center justify-center transition-all">
             <span className="hidden group-hover:block text-[14px] text-[#d8d8d8] absolute">×</span>
           </div>

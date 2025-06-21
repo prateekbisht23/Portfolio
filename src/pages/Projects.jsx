@@ -2,6 +2,7 @@ import { FaGithub, FaRegFolder } from "react-icons/fa";
 import { AnimatePresence } from "framer-motion";
 import ProjectPopUp from "../components/ProjectPopUp";
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 function ProjectCard({ title, description, technologies, number, link, openPopup }) {
   return (
@@ -84,10 +85,10 @@ function Projects() {
       link: "https://weather-app-three-gilt-25.vercel.app/",
     },
     {
-      title: "Pac-Man Game",
-      description: "A classic Pac-Man game clone developed using Java and JavaSwing Framework.",
-      technologies: ["Java", "JavaSwing", "Eclipse IDE"],
-      link: "https://github.com/prateekbisht23/pacman-game",
+      title: "CloudPad",
+      description: "A lightweight, real-time platform for quick text and file sharing via unique URLs. It enables instant, temporary sharing across devices by simply opening the same link.ˀˀ",
+      technologies: ["Django", "HTML", "JavaScript", "CSS", "Supabase"],
+      link: "https://cloudpad-mya5.onrender.com/",
     },
     {
       title: "Currency Converter",
@@ -104,7 +105,13 @@ function Projects() {
   ];
 
   return (
-    <div className="w-full my-20 py-10 sm:py-15 px-6 sm:px-15 bg-[rgb(38,38,38)]">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="w-full my-20 py-10 sm:py-15 px-6 sm:px-35 bg-[rgb(38,38,38)]"
+    >
       <div className="w-full border-b border-[#474747] flex items-center mb-8 sm:mb-10 hover:cursor-pointer">
         <div className="px-3 sm:px-4 py-1 sm:py-2 bg-[rgb(64,64,64)] border border-[#373737] flex items-center space-x-3 sm:space-x-4 group">
           <span className="text-[#d8d8d8] text-xs font-extralight">projects.jsx</span>
@@ -123,7 +130,7 @@ function Projects() {
       <AnimatePresence>
         {popupContent && <ProjectPopUp content={popupContent} onClose={() => setPopupContent(null)} />}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 }
 
