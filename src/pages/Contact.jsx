@@ -171,7 +171,7 @@ function Contact() {
                 </div>
 
                 <div className="flex justify-end">
-                  <button type="submit" className="bg-[rgb(9,105,230)] text-[#dddddd] py-2 px-6 rounded-lg hover:bg-[rgb(5,91,205)] transition">
+                  <button type="submit" className="bg-[rgb(9,105,230)] text-[#dddddd] py-2 px-6 rounded-lg hover:bg-[rgb(5,91,205)] transition hover: cursor-pointer">
                     Send Message →
                   </button>
                 </div>
