@@ -4,7 +4,6 @@ import { Mail, Coffee } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ResumePopUp from '../components/ResumePopUp';
 import resumePDF from "../assets/Resume_Prateek.pdf";
-import { href } from 'react-router-dom';
 
 function Home() {
   const [isToggled, setIsToggled] = useState(false);
@@ -28,7 +27,7 @@ function Home() {
           </a>
         </div>
 
-        <h1 className="text-3xl justify-self-center md:text-6xl font-bold flex gap-3 select-none">
+        <div className="text-3xl justify-self-center  md:text-6xl font-bold flex gap-3 select-none">
           <span className="text-blue-500">&lt;</span>
           <span
             className="hover:cursor-pointer"
@@ -41,7 +40,7 @@ function Home() {
             )}
           </span>
           <span className="text-blue-500">/&gt;</span>
-        </h1>
+        </div>
 
         <p className="text-lg md:text-xl text-gray-400 max-w-lg mx-auto md:mx-0">
           I'm a full-stack developer specializing in building exceptional digital experiences!!
@@ -55,19 +54,19 @@ function Home() {
         <div className="hidden md:block font-mono text-gray-600">
           <div className="text-sm">class Developer extends Human {'{'}</div>
           <div className="pl-4 text-sm">
-            const skills = ['JavaScript', 'React', 'Node.js', 'Python'];
+            const skills = [&apos;JavaScript&apos;, &apos;React&apos;, &apos;Node.js&apos;, &apos;Python&apos;];
             <br />
-            const passion = 'Building exceptional digital experiences';
+            const passion = &apos;Building exceptional digital experiences&apos;;
           </div>
           <div className="text-sm">{'}'}</div>
         </div>
         <div className="hidden md:block text-gray-400 font-mono">
           <p>
-            <span className="text-gray-500">// Reminder to CODE...</span>
+            <span className="text-gray-500">&#47;&#47; Reminder to CODE...</span>
           </p>
           <p>
             <span className="text-purple-400">const</span> quote =
-            <span className="text-green-400"> "Code! Create! Conquer!"</span>;
+            <span className="text-green-400"> &quot;Code! Create! Conquer!&quot;</span>;
           </p>
         </div>
       </div>

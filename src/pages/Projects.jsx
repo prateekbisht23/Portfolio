@@ -4,7 +4,7 @@ import ProjectPopUp from "../components/ProjectPopUp";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 
-function ProjectCard({ title, description, technologies, number, link, openPopup }) {
+function ProjectCard({ title, description, technologies, number, link, github, openPopup }) {
   return (
     <div
       className="rounded-xl p-5 sm:p-6 hover:border-primary border border-[rgb(70,70,70)] 
@@ -67,7 +67,7 @@ function ProjectCard({ title, description, technologies, number, link, openPopup
         >
           View Project →
         </a>
-        <FaGithub className="text-gray-400 hover:text-white cursor-pointer" />
+        <a href={github} target="_blank"><FaGithub className="text-gray-400 hover:text-white cursor-pointer" /></a>
       </div>
     </div>
   );
@@ -78,29 +78,33 @@ function Projects() {
 
   const projects = [
     {
+      title: "CloudPad",
+      description: "A lightweight, real-time platform for quick text and file sharing via unique URLs. It enables instant, temporary sharing across devices by simply opening the same link!!",
+      technologies: ["Django", "HTML", "JavaScript", "CSS", "Supabase"],
+      link: "https://cloudpad-mya5.onrender.com/",
+      github: "https://github.com/prateekbisht23/CloudPad",
+    },
+    {
+      title: "Task Manager App",
+      description: "A Flutter app integrated with Supabase and Riverpod for task management. Features include adding, updating, and completing tasks, with smart task recommendations based on past activity. Shimmer effects enhance the loading experience!!",
+      technologies: ["Flutter", "Dart", "Supabase", "Riverpod"],
+      link: "https://github.com/prateekbisht23/task_manager",
+      github: "https://github.com/prateekbisht23/task_manager",
+    },
+    {
       title: "Weather App",
       description:
         "A web application that provides real-time weather information for any location using the OpenWeatherMap API!!",
       technologies: ["React", "TailwindCSS", "Chart.js", "OpenWeatherMap API"],
       link: "https://weather-app-three-gilt-25.vercel.app/",
-    },
-    {
-      title: "CloudPad",
-      description: "A lightweight, real-time platform for quick text and file sharing via unique URLs. It enables instant, temporary sharing across devices by simply opening the same link.ˀˀ",
-      technologies: ["Django", "HTML", "JavaScript", "CSS", "Supabase"],
-      link: "https://cloudpad-mya5.onrender.com/",
+      github: "https://github.com/prateekbisht23/WeatherApp",
     },
     {
       title: "Currency Converter",
       description: "A web application that converts currencies using real-time exchange rates from an external API.",
       technologies: ["React", "TailwindCSS", "Exchange Rate API"],
       link: "https://currencyconvertor-git-main-prateekbisht23s-projects.vercel.app/",
-    },
-    {
-      title: "GitHub Profile Card",
-      description: "A dynamic card that displays GitHub profile information using the GitHub API.",
-      technologies: ["JavaScript", "HTML", "CSS", "GitHub API"],
-      link: "https://prateekbisht23.github.io/GitHub-Profile-Card/",
+      github: "https://github.com/prateekbisht23/currencyConvertor",
     },
   ];
 
