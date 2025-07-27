@@ -102,7 +102,7 @@ function Contact() {
         {/* Contact Section */}
         <div className="flex flex-col md:ml-25">
           {/* Comment Block */}
-          <div className="text-sm text-[#4f4f4f]">
+          <div className="text-sm text-[#4f4f4f] mb-6">
             <span>/**</span>
             <br />
             <span className="ml-2.5">* Contact Form Component</span>
