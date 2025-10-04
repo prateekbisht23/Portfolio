@@ -17,29 +17,31 @@ function Home() {
       className="min-h-[calc(100vh-3.5rem)] w-full flex flex-col md:flex-row items-center justify-around px-5 md:mt-10 md:px-10 py-25 space-y-5 md:space-y-0"
     >
       {/* Left Content */}
-      <div className="space-y-6 text-center md:text-left">
-        <div className="flex items-center ml-10 md:ml-0 justify-start gap-3">
-          <span className="w-3 h-3 rounded-full bg-green-500 animate-pulse"></span>
-          <a href="https://www.linkedin.com/in/prateek-bisht-7a062a258/" target="_blank">
-            <div className="px-2 py-1 text-sm rounded-full bg-green-500/20 text-green-500">
-              Available for hire
-            </div>
-          </a>
-        </div>
+      <div className="space-y-6 text-center justify-center md:text-left">
+        <div className="flex flex-col items-start justify-self-center md:items-start gap-3">
+          <div className="flex items-center gap-3">
+            <span className="w-3 h-3 rounded-full bg-green-500 animate-pulse"></span>
+            <a href="https://www.linkedin.com/in/prateek-bisht-7a062a258/" target="_blank">
+              <div className="px-2 py-1 text-sm rounded-full bg-green-500/20 text-green-500">
+                Available for hire
+              </div>
+            </a>
+          </div>
 
-        <div className="text-3xl justify-self-center  md:text-6xl font-bold flex gap-3 select-none">
-          <span className="text-blue-500">&lt;</span>
-          <span
-            className="hover:cursor-pointer"
-            onClick={() => setIsToggled(!isToggled)}
-          >
-            {isToggled ? (
-              <span className="text-gray-400 transition-opacity duration-300">Hello World!</span>
-            ) : (
-              "Prateek Bisht"
-            )}
-          </span>
-          <span className="text-blue-500">/&gt;</span>
+          <div className="text-3xl md:text-6xl font-bold flex gap-3 select-none">
+            <span className="text-blue-500">&lt;</span>
+            <span
+              className="hover:cursor-pointer"
+              onClick={() => setIsToggled(!isToggled)}
+            >
+              {isToggled ? (
+                <span className="text-gray-400 transition-opacity duration-300">Hello World!</span>
+              ) : (
+                "Prateek Bisht"
+              )}
+            </span>
+            <span className="text-blue-500">/&gt;</span>
+          </div>
         </div>
 
         <p className="text-lg md:text-xl text-gray-400 max-w-lg mx-auto md:mx-0">
