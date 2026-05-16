@@ -1,3 +1,15 @@
+node_modules
+.next
+out
+build
+dist
+dist-ssr
+*.local
+
+# Bun
+.bun-cache
+# bun.lock (Optional: Usually committed, but if the user wants to keep it clean)
+
 # Logs
 logs
 *.log
@@ -7,10 +19,15 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Vercel
+.vercel
 
 # Editor directories and files
 .vscode/*
