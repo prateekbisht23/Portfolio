@@ -25,6 +25,9 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://prateekbisht.vercel.app'),
   title: 'Prateek Bisht — Software Engineer',
   description: 'Backend engineer specialising in Go, PostgreSQL and AWS. Building systems that scale.',
+  icons: {
+    icon: '/sunflower.png',
+  },
   openGraph: {
     url: 'https://prateekbisht.vercel.app/',
     siteName: 'Prateek Bisht Portfolio',

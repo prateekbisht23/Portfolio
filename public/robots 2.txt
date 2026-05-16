@@ -1,0 +1,6 @@
+# Robots.txt for Prateek Bisht Portfolio
+User-agent: *
+Allow: /
+
+Sitemap: https://prateekbisht.dev/sitemap.xml
+Host: https://prateekbisht.dev
