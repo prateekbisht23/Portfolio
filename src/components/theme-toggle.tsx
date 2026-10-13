@@ -1,77 +1,27 @@
 "use client"
 
-import * as React from "react"
-import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
-import { Button } from "@/components/ui/button"
-import { motion, AnimatePresence } from "framer-motion"
 
-export function ModeToggle() {
-  const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = React.useState(false)
+export function ThemeToggle() {
+  const { resolvedTheme, setTheme } = useTheme()
 
-  const handleThemeChange = React.useCallback(() => {
-    const newTheme = theme === "light" ? "dark" : "light"
-    
-    if (typeof document !== "undefined" && "startViewTransition" in document) {
-      ;(document as Document & { startViewTransition: (callback: () => void) => void }).startViewTransition(() => {
-        setTheme(newTheme)
-      })
-    } else {
-      setTheme(newTheme)
-    }
-  }, [theme, setTheme])
-
-  React.useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  if (!mounted) {
-    return (
-      <Button
-        variant="outline"
-        size="icon"
-        className="w-10 h-10 rounded-full"
-      >
-        <div className="h-[1.2rem] w-[1.2rem]" />
-        <span className="sr-only">Toggle theme</span>
-      </Button>
-    )
+  const toggle = () => {
+    const next = resolvedTheme === "dark" ? "light" : "dark"
+    if (!document.startViewTransition) return setTheme(next)
+    document.startViewTransition(() => setTheme(next))
   }
 
   return (
-    <Button
-      variant="outline"
-      size="icon"
-      onClick={handleThemeChange}
-      className="w-10 h-10 rounded-full relative overflow-hidden"
+    <button
+      type="button"
+      onClick={toggle}
+      aria-label="Toggle theme"
+      className="absolute -top-2 -right-2 cursor-pointer rounded-full p-3 text-foreground/70 transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
-      <AnimatePresence mode="wait" initial={false}>
-        {theme === "light" ? (
-          <motion.div
-            key="sun"
-            initial={{ scale: 0, rotate: -180 }}
-            animate={{ scale: 1, rotate: 0 }}
-            exit={{ scale: 0, rotate: 180 }}
-            transition={{ type: "spring", stiffness: 400, damping: 25 }}
-            className="absolute inset-0 flex items-center justify-center"
-          >
-            <Sun className="h-[1.2rem] w-[1.2rem]" />
-          </motion.div>
-        ) : (
-          <motion.div
-            key="moon"
-            initial={{ scale: 0, rotate: 180 }}
-            animate={{ scale: 1, rotate: 0 }}
-            exit={{ scale: 0, rotate: -180 }}
-            transition={{ type: "spring", stiffness: 400, damping: 25 }}
-            className="absolute inset-0 flex items-center justify-center"
-          >
-            <Moon className="h-[1.2rem] w-[1.2rem]" />
-          </motion.div>
-        )}
-      </AnimatePresence>
-      <span className="sr-only">Toggle theme</span>
-    </Button>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <circle cx="8" cy="8" r="6.5" stroke="currentColor" />
+        <path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="currentColor" />
+      </svg>
+    </button>
   )
 }

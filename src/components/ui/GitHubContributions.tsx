@@ -1,62 +1,41 @@
 'use client'
 
-import React from 'react';
-import GitHubCalendar from 'react-github-calendar';
-import { useTheme } from 'next-themes';
-import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react'
+import GitHubCalendar from 'react-github-calendar'
+import { useTheme } from 'next-themes'
 
-interface GitHubContributionsProps {
-  username: string;
-  compact?: boolean;
-  className?: string;
+// Neutral greys so the grid reads as texture, not decoration.
+const palette = {
+  light: ['#e9ebea', '#d0d4d2', '#adb2b0', '#868b89', '#5c6160'],
+  dark: ['#1c1f20', '#2e3234', '#4a4f51', '#6d7274', '#9a9fa0'],
 }
 
-const GitHubContributions: React.FC<GitHubContributionsProps> = ({ 
-  username,
-  compact = false,
-  className = ""
-}) => {
-  const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const theme = {
-    light: ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"],
-    dark: ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"],
-  };
-
-  if (!mounted) {
-    return (
-      <div className={`w-full ${compact ? 'h-[120px]' : 'h-[160px]'} rounded-xl bg-muted animate-pulse ${className}`} />
-    );
-  }
+export default function GitHubContributions({ username }: { username: string }) {
+  const { resolvedTheme } = useTheme()
+  // Weeks to show: the full year on wide screens, about seven months on phones.
+  const [weeks, setWeeks] = useState<number | null>(null)
+  useEffect(() => setWeeks(window.matchMedia('(min-width: 640px)').matches ? 53 : 32), [])
 
   return (
-    <div className={`relative overflow-hidden rounded-xl ${className}`}>
-      <motion.div
-        className="w-full overflow-hidden rounded-xl bg-transparent backdrop-blur-none border-0 hover:shadow-sm transition-shadow duration-300"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className={`${compact ? 'p-2' : 'p-3'} hover:scale-[1.005] transition-transform duration-300`}>
-          
-          <GitHubCalendar
-            username={username}
-            colorScheme={resolvedTheme as "light" | "dark"}
-            fontSize={compact ? 14 : 12}
-            blockSize={compact ? 10 : 12}
-            blockMargin={compact ? 2 : 4}
-            showWeekdayLabels={!compact}
-            theme={theme}
-          />
-        </div>
-      </motion.div>
+    <div className="overflow-hidden text-xs text-muted-foreground">
+      {weeks ? (
+        <GitHubCalendar
+          username={username}
+          colorScheme={resolvedTheme === 'dark' ? 'dark' : 'light'}
+          theme={palette}
+          transformData={(data) => data.slice(-weeks * 7)}
+          transformTotalCount={false}
+          blockSize={8}
+          blockMargin={2}
+          blockRadius={2}
+          fontSize={12}
+          hideColorLegend
+          errorMessage="GitHub activity is unavailable right now."
+          labels={{ totalCount: '{{count}} contributions in the last year' }}
+        />
+      ) : (
+        <div className="h-[110px] rounded-lg bg-muted" />
+      )}
     </div>
-  );
-};
-
-export default GitHubContributions;
+  )
+}
