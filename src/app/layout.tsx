@@ -1,76 +1,42 @@
 import type { Metadata } from "next";
-import { Instrument_Serif, Hanken_Grotesk } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider"
-import { ScrollToTop } from "@/components/ui/ScrollAnimations"
-import GradualBlur from "@/components/GradualBlur"
+import { ThemeProvider } from "@/components/theme-provider";
+import { SiteNav } from "@/components/site-nav";
+import { SiteFooter } from "@/components/site-footer";
+import { site } from "@/data/site";
 
-const hkGrotesk = Hanken_Grotesk({
-  weight: ['400'],
-  style: 'normal',
-  subsets: ['latin'],
-  variable: '--font-hk-grotesk',
-  display: 'swap',
-})
-
-
-const instrumentSerif = Instrument_Serif({
-  weight: ['400'],
-  style: 'normal',
-  subsets: ['latin'],
-  variable: '--font-instrument-serif'
-})
+const geistSans = Geist({ subsets: ["latin"], variable: "--font-geist-sans", display: "swap" });
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono", display: "swap" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://prateekbisht.vercel.app'),
-  title: 'Prateek Bisht — Software Engineer',
-  description: 'Backend engineer specialising in Go, PostgreSQL and AWS. Building systems that scale.',
-  icons: {
-    icon: '/sunflower.png',
+  metadataBase: new URL(site.url),
+  title: {
+    default: `${site.name} — Software Engineer`,
+    template: `%s · ${site.name}`,
   },
+  description: site.description,
+  icons: { icon: "/sunflower.png" },
   openGraph: {
-    url: 'https://prateekbisht.vercel.app/',
-    siteName: 'Prateek Bisht Portfolio',
-    locale: 'en_US',
-    type: 'website',
-    images: [{
-      url: '/pfp.jpg',
-      width: 1200,
-      height: 630,
-      alt: 'Prateek Bisht - Portfolio'
-    }],
+    url: site.url,
+    siteName: site.name,
+    locale: "en_US",
+    type: "website",
+    images: [{ url: "/pfp.jpg", alt: site.name }],
   },
+  verification: { google: "tMCNs2fgM6voEHBd3JsySffMFSiUCQDEFEF1iYI3-ZQ" },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <meta name="google-site-verification" content="tMCNs2fgM6voEHBd3JsySffMFSiUCQDEFEF1iYI3-ZQ" />
-      </head>
-      <body className={`${hkGrotesk.className} ${instrumentSerif.variable}`} suppressHydrationWarning={true}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <div className="relative z-10">
-            {children}
+    <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <div className="mx-auto flex min-h-screen max-w-xl flex-col px-5 pt-4 pb-10 sm:pt-6 sm:pb-16">
+            <SiteNav />
+            <main className="flex flex-col gap-12">{children}</main>
+            <SiteFooter />
           </div>
-          <GradualBlur 
-            position="bottom" 
-            height="1.5rem" 
-            target="page" 
-            zIndex={1}
-            strength={2}
-            divCount={5}
-          />
-          <ScrollToTop />
         </ThemeProvider>
       </body>
     </html>
