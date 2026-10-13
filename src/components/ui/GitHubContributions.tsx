@@ -4,10 +4,10 @@ import { useEffect, useState } from 'react'
 import GitHubCalendar from 'react-github-calendar'
 import { useTheme } from 'next-themes'
 
-// Five steps from empty to the signal green, per theme.
+// Neutral greys so the grid reads as texture, not decoration.
 const palette = {
-  light: ['#e4e7e6', '#bbe5c8', '#7fcf98', '#3fae68', '#16a34a'],
-  dark: ['#1c1f20', '#14432a', '#1d7a42', '#2fb862', '#4ade80'],
+  light: ['#e9ebea', '#d0d4d2', '#adb2b0', '#868b89', '#5c6160'],
+  dark: ['#1c1f20', '#2e3234', '#4a4f51', '#6d7274', '#9a9fa0'],
 }
 
 export default function GitHubContributions({ username }: { username: string }) {
@@ -17,7 +17,7 @@ export default function GitHubContributions({ username }: { username: string }) 
   useEffect(() => setWeeks(window.matchMedia('(min-width: 640px)').matches ? 53 : 32), [])
 
   return (
-    <div className="overflow-hidden font-mono text-xs text-muted-foreground">
+    <div className="overflow-hidden text-xs text-muted-foreground">
       {weeks ? (
         <GitHubCalendar
           username={username}
@@ -28,7 +28,7 @@ export default function GitHubContributions({ username }: { username: string }) 
           blockSize={8}
           blockMargin={2}
           blockRadius={2}
-          fontSize={11}
+          fontSize={12}
           hideColorLegend
           errorMessage="GitHub activity is unavailable right now."
           labels={{ totalCount: '{{count}} contributions in the last year' }}

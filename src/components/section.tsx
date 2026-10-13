@@ -7,7 +7,7 @@ export function Section({ title, more, children }: { title: string; more?: { hre
       <div className="flex items-baseline justify-between">
         <h2 className="text-base font-normal tracking-tight">{title}</h2>
         {more && (
-          <span className="font-mono text-xs">
+          <span className="text-sm">
             <InkLink href={more.href}>{more.label}</InkLink>
           </span>
         )}

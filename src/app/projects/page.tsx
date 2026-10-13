@@ -15,9 +15,7 @@ export default function ProjectsPage() {
       <ul aria-label="Projects" className="-mx-3 flex flex-col gap-1">
         {projects.map((p) => (
           <li key={p.name}>
-            <LeaderRow label={p.name} meta={`[${p.tag}]`} href={p.href}>
-              {p.summary}
-            </LeaderRow>
+            <LeaderRow label={p.name} meta={p.tag} href={p.href} title={p.summary} />
           </li>
         ))}
       </ul>

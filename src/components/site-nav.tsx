@@ -8,7 +8,7 @@ export function SiteNav() {
   const pathname = usePathname()
 
   return (
-    <nav aria-label="Primary" className="-ml-2 mb-8 flex flex-wrap items-center font-mono text-xs text-muted-foreground">
+    <nav aria-label="Primary" className="-ml-2 mb-6 flex flex-wrap items-center gap-1 text-sm text-muted-foreground">
       {nav.map(({ href, label }) => {
         const current = href === "/" ? pathname === "/" : pathname.startsWith(href)
         return (
@@ -16,10 +16,10 @@ export function SiteNav() {
             key={href}
             href={href}
             aria-current={current ? "page" : undefined}
-            className="inline-flex min-h-10 items-center rounded-full px-0.5 transition-colors sm:px-1.5 hover:text-foreground aria-[current]:text-foreground"
+            className="inline-flex min-h-10 items-center rounded-full transition-colors hover:text-foreground aria-[current]:text-foreground"
           >
-            <span className={current ? "rounded-full bg-muted px-1.5 py-1 sm:px-2" : "px-1.5 py-1 sm:px-2"}>
-              {href === "/" ? label : `~/${label}`}
+            <span className={current ? "rounded-full bg-muted px-2 py-1" : "px-2 py-1"}>
+              {label}
             </span>
           </Link>
         )

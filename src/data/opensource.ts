@@ -1,4 +1,5 @@
 export interface Contribution {
+  project: string
   repo: string
   number: number
   title: string
@@ -6,9 +7,9 @@ export interface Contribution {
   year: string
 }
 
-// Shown when the GitHub API is unavailable (no token, rate limit, network).
-export const fallbackContributions: Contribution[] = [
+export const contributions: Contribution[] = [
   {
+    project: 'Supabase',
     repo: 'supabase/supabase',
     number: 38675,
     title: 'Update the import-data guide to match a dashboard UI change',
@@ -16,6 +17,7 @@ export const fallbackContributions: Contribution[] = [
     year: '2025',
   },
   {
+    project: 'freeCodeCamp',
     repo: 'freeCodeCamp/freeCodeCamp',
     number: 62312,
     title: 'Correct role terminology in a curriculum user story',
@@ -23,6 +25,7 @@ export const fallbackContributions: Contribution[] = [
     year: '2025',
   },
   {
+    project: 'Airbnb',
     repo: 'airbnb/javascript',
     number: 3153,
     title: 'Document the ESLint --ext requirement for .jsx files',
@@ -30,6 +33,7 @@ export const fallbackContributions: Contribution[] = [
     year: '2026',
   },
   {
+    project: 'Invoicely',
     repo: 'legions-developer/invoicely',
     number: 56,
     title: 'Fix the wrong default status in the invoice status modal',
@@ -37,6 +41,7 @@ export const fallbackContributions: Contribution[] = [
     year: '2025',
   },
   {
+    project: 'Invoicely',
     repo: 'legions-developer/invoicely',
     number: 50,
     title: 'Fix unreadable optional-badge text in light mode',
@@ -45,5 +50,3 @@ export const fallbackContributions: Contribution[] = [
   },
 ]
 
-// Small practice-repo PRs that the live feed should skip.
-export const hiddenRepos = ['drishmahajan/localrepo', 'Dahsle/chat-P2P']

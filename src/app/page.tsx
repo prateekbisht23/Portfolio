@@ -5,23 +5,11 @@ import { LeaderRow } from "@/components/leader-row";
 import GitHubContributions from "@/components/ui/GitHubContributions";
 import { site } from "@/data/site";
 import { projects } from "@/data/projects";
-import { getContributions } from "@/lib/github";
 
-export const revalidate = 86400;
-
-export default async function Home() {
-  const contributions = (await getContributions(site.github)).slice(0, 4);
-
+export default function Home() {
   return (
     <>
-      <PageHeader
-        title={
-          <>
-            {site.name}
-            <span aria-hidden="true" className="cursor-blink ml-0.5 text-signal">▍</span>
-          </>
-        }
-      >
+      <PageHeader title={site.name}>
         <p className="max-w-[34rem] text-sm leading-6 text-muted-foreground">{site.tagline}</p>
         <p className="mt-3 max-w-[34rem] text-sm leading-6 text-muted-foreground">
           Currently a <span className="text-foreground">Software Engineer</span> at{" "}
@@ -35,18 +23,12 @@ export default async function Home() {
 
       <GitHubContributions username={site.github} />
 
-      <Section title="Selected work" more={{ href: "/projects", label: "all projects" }}>
+      <Section title="Selected work" more={{ href: "/projects", label: "All projects" }}>
         {projects
           .filter((p) => p.featured)
           .map((p) => (
-            <LeaderRow key={p.name} label={p.name} meta={`[${p.tag}]`} href={p.href} />
+            <LeaderRow key={p.name} label={p.name} meta={p.tag} href={p.href} />
           ))}
-      </Section>
-
-      <Section title="Open source" more={{ href: "/open-source", label: "all PRs" }}>
-        {contributions.map((c) => (
-          <LeaderRow key={c.href} label={c.title} meta={`${c.repo.split("/")[1]}#${c.number}`} href={c.href} />
-        ))}
       </Section>
     </>
   );

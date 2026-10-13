@@ -24,19 +24,12 @@ export default function ExperiencePage() {
               <div className="grid grid-cols-[auto_1fr_auto] items-center gap-3">
                 <h2 className="text-base font-normal tracking-tight">{role.company}</h2>
                 <span aria-hidden="true" className="border-t border-border" />
-                <span className="font-mono text-xs tabular-nums text-muted-foreground">{role.period}</span>
+                <span className="text-xs tabular-nums text-muted-foreground">{role.period}</span>
               </div>
-              <p className="mt-1 text-sm text-foreground/80">
-                {role.title} · {role.location}
-              </p>
-              <ul className="mt-3 flex flex-col gap-2">
-                {role.points.map((point) => (
-                  <li key={point} className="flex gap-2.5 text-sm leading-6 text-muted-foreground">
-                    <span aria-hidden="true" className="font-mono text-xs leading-6 text-foreground/30">›</span>
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="mt-2 flex flex-col justify-between gap-x-4 text-sm leading-6 sm:flex-row">
+                <span className="text-foreground/80">{role.title}</span>
+                <span className="text-muted-foreground">{role.location}</span>
+              </div>
             </div>
           </div>
         ))}

@@ -5,7 +5,6 @@
 
 @theme inline {
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
@@ -72,16 +71,6 @@
   background-size: 100% 100%;
 }
 
-/* Block cursor after the name. */
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
-}
-.cursor-blink {
-  animation: blink 1.1s step-end infinite;
-}
-
 /* Circular reveal when switching themes. */
 ::view-transition-group(root) {
   animation-timing-function: var(--expo-out);
@@ -103,9 +92,6 @@
 @media (prefers-reduced-motion: reduce) {
   .ink-label {
     transition: none;
-  }
-  .cursor-blink {
-    animation: none;
   }
   ::view-transition-group(*),
   ::view-transition-old(*),

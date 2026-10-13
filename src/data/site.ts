@@ -15,8 +15,8 @@ export const site = {
 }
 
 export const nav = [
-  { href: '/', label: '~' },
-  { href: '/experience', label: 'experience' },
-  { href: '/projects', label: 'projects' },
-  { href: '/open-source', label: 'open-source' },
+  { href: '/', label: 'Home' },
+  { href: '/experience', label: 'Experience' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/open-source', label: 'Open source' },
 ]
