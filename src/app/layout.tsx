@@ -1,17 +1,16 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import { SiteNav } from "@/components/site-nav";
+import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { site } from "@/data/site";
-
-const geistSans = Geist({ subsets: ["latin"], variable: "--font-geist-sans", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — Software Engineer`,
+    default: `${site.name} · Software engineer`,
     template: `%s · ${site.name}`,
   },
   description: site.description,
@@ -28,14 +27,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={geistSans.variable}>
+    <html lang="en" suppressHydrationWarning className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <div className="mx-auto flex min-h-screen max-w-xl flex-col px-5 pt-4 pb-10 sm:pt-6 sm:pb-20">
-            <SiteNav />
-            <main className="flex flex-col gap-12">{children}</main>
-            <SiteFooter />
-          </div>
+        <ThemeProvider>
+          <SiteHeader />
+          <main className="page">{children}</main>
+          <SiteFooter />
         </ThemeProvider>
       </body>
     </html>

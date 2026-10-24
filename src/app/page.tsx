@@ -1,34 +1,71 @@
-import Image from "next/image";
-import { PageHeader } from "@/components/page-header";
+import { Activity } from "@/components/activity";
+import { Contact } from "@/components/contact";
 import { Section } from "@/components/section";
-import { LeaderRow } from "@/components/leader-row";
-import GitHubContributions from "@/components/ui/GitHubContributions";
+import { Status } from "@/components/status";
+import { Tags } from "@/components/tags";
+import { TextLink } from "@/components/text-link";
+import { WorkList } from "@/components/work-list";
 import { site } from "@/data/site";
-import { projects } from "@/data/projects";
+import { projects } from "@/data/work";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <>
-      <PageHeader title={site.name}>
-        <p className="max-w-[34rem] text-sm leading-6 text-muted-foreground">{site.tagline}</p>
-        <p className="mt-3 max-w-[34rem] text-sm leading-6 text-muted-foreground">
-          Currently a <span className="text-foreground">Software Engineer</span> at{" "}
-          <span className="ml-0.5 inline-flex items-center gap-1.5 rounded-full bg-muted py-0.5 pr-2 pl-1 align-middle text-foreground">
-            <Image src="/fyscaltech_logo.jpeg" alt="" width={16} height={16} className="size-4 rounded-full" />
-            Fyscal
-          </span>
-          , building platforms where AI coding agents turn a requirement into a reviewed pull request.
+      <header className="hero">
+        <div className="hero-name">
+          <h1 className="display">{site.name}</h1>
+          <Status>{site.status}</Status>
+          <p className="lede">{site.tagline}</p>
+        </div>
+        <p className="hero-intro">
+          I&apos;m a software engineer at <TextLink href={site.links.fyscal}>Fyscal</TextLink>, building platforms where AI
+          coding agents turn a requirement into a reviewed pull request. Each agent works in its own sandbox; the backends
+          underneath are Go and TypeScript.
         </p>
-      </PageHeader>
+        <div className="actions hero-actions">
+          <a className="button solid" href={`mailto:${site.email}?subject=${encodeURIComponent("Hello from your site")}`}>
+            Say hello
+          </a>
+          <a className="button ghost" href={site.links.call} target="_blank" rel="noopener noreferrer">
+            Book a call ↗
+          </a>
+          <a className="button text" href={site.links.resume} target="_blank" rel="noopener noreferrer">
+            Resume
+          </a>
+        </div>
+      </header>
 
-      <GitHubContributions username={site.github} />
+      <Section label="Work">
+        <WorkList items={projects.map((p) => ({ title: p.title, note: p.note, meta: p.kind, href: `/work/${p.slug}` }))} />
+        <Link className="button text flush" href="/work">
+          All work →
+        </Link>
+      </Section>
 
-      <Section title="Selected work" more={{ href: "/projects", label: "All projects" }}>
-        {projects
-          .filter((p) => p.featured)
-          .map((p) => (
-            <LeaderRow key={p.name} label={p.name} meta={p.tag} href={p.href} />
-          ))}
+      <Activity />
+
+      <Section label="Stack">
+        <Tags items={site.stack} />
+      </Section>
+
+      <Contact />
+
+      <Section label="Elsewhere">
+        <ul className="link-list">
+          <li>
+            <TextLink href={site.links.github}>GitHub</TextLink>
+          </li>
+          <li>
+            <TextLink href={site.links.linkedin}>LinkedIn</TextLink>
+          </li>
+          <li>
+            <TextLink href={site.links.cal}>Cal.com</TextLink>
+          </li>
+          <li>
+            <TextLink href={site.links.resume}>Resume</TextLink> <span className="meta muted">PDF</span>
+          </li>
+        </ul>
       </Section>
     </>
   );
