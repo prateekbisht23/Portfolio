@@ -9,7 +9,7 @@ export const site = {
   github: 'prateekbisht23',
   links: {
     github: 'https://github.com/prateekbisht23',
-    linkedin: 'https://www.linkedin.com/in/prateek-bisht-7a062a258',
+    linkedin: 'https://www.linkedin.com/in/prateekbisht23/',
     call: 'https://cal.com/prateek.bisht/15min',
     cal: 'https://cal.com/prateek.bisht',
     resume: '/Prateek_Bisht_Resume.pdf',
